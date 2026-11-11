@@ -21,45 +21,49 @@ public class Solution {
 
     public String conCat(String s1, String s2) {
         //implement code here
-        int lenS1 = s1.length();
-        int lenS2 = s2.length();
-        while (lenS1 + lenS2 > 0) {
-            
-         if ( s1.substring(lenS1-1, lenS1).equals(s2.substring(0,1))) {
-            return s1 + s2.substring(1);
+        int lens1 = s1.length();
+        int lens2 = s2.length();
+        if (lens1 + lens2 > 0){
+            if (lens2 == 0){
+                return s1; }
+            if (lens1 == 0){
+                return s2;}
+            if ( s1.substring(lens1-1, lens1).equals(s2.substring(0,1))) {
+            return s1 + s2.substring(1);}}
+         else 
+            return (s1.substring(0) + s2.substring(0));
+        return s1+s2;
+        
         }
-        else {
-            return s1 + s2;
-        }
-        }
-        return "";
-    }
 
     public String withoutX(String s1) {
         //implement code here
+        int len = s1.length();
+        if ((s1.substring(0,1).equals("x")) && (s1.substring(len -1).equals("x"))){
+            return s1.substring(1,len-1);
+        }
         if (s1.substring(0,1).equals("x")) {
-        String newS1 = s1.substring(1);
-        int newS1Len = newS1.length();
-        if (newS1.substring(newS1Len).equals("x")){
-
-        String betS1 = newS1.substring(0,newS1Len-1);
-        return betS1;
+            //remove the first character
+            return s1.substring(1);
         }
-        }
-        return (String) s1.substring(1);
-    }
+        if (s1.substring(len - 1).equals("x")) {
+            //remove last character
+            String lastchar = s1.substring(0, len-1);
+            return lastchar; }
+        return s1; }
 
     public String fizzString(String s1) {
         //implement code here
        int lenOfs1 = s1.length();
     
-        if (s1.substring(0,1).equals("f")){
+       if ((s1.substring(0,1).equals("f")) && (s1.substring( (lenOfs1-1), lenOfs1).equals("b"))) {
+        return "FizzBuzz";
+       } 
+       if (s1.substring(0,1).equals("f")){
         return "Fizz";
        } if (s1.substring( (lenOfs1-1), lenOfs1).equals("b")) {
         return "Buzz";
-       } if ((s1.substring(0,1).equals("f")) && (s1.substring( (lenOfs1-1), lenOfs1).equals("b"))) {
-        return "FizzBuzz";
-       }
+       } 
        else {
         return s1;
        }
